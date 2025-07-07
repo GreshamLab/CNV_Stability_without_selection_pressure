@@ -5,7 +5,8 @@ import matplotlib.pyplot as plt
 import pandas as pd
 from scipy.special import erf
 
-
+#-----------------------------------
+#-----------------------------------
 #-----------------------------------
 
 ###Fig 1A: Schematic of the main question 
@@ -63,6 +64,10 @@ plt.tight_layout()
 #plt.savefig('Fig_1A.png',dpi=300,pad_inches=0.05)
 #plt.savefig('Fig_1A.pdf',dpi=300,pad_inches=0.05)
 
+plt.show()
+
+#-----------------------------------
+#-----------------------------------
 #-----------------------------------
 
 ###Fig 1B: Schematic of all CNV strains in the study 
@@ -248,4 +253,8 @@ ax4.text(0.5,-1.8,'XIV',color='red',fontsize=12)
 #plt.savefig('Fig_1B.png',bbox_inches='tight',pad_inches = 0.05,dpi=300)
 #plt.savefig('Fig_1B.pdf',bbox_inches='tight',pad_inches = 0.05,dpi=300)
 
+plt.show()
+
+#-----------------------------------
+#-----------------------------------
 #-----------------------------------
