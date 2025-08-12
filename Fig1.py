@@ -60,9 +60,6 @@ ax1.text(0.45,0.2,'Selection\nfor CNVs')
 ax2.text(0.25,0.2,'Stable CNVs')
 ax3.text(0.25,0.2,'Loss\nof CNVs')
 
-#ax1.set_title('Selection pressure')
-#ax2.set_title('Selection relaxed')
-
 ax1.fill_between([0.15,1.1],[1.1,1.1],[-0.1,-0.1],color='khaki',zorder=0)
 
 for ax in [ax2,ax3]:
@@ -94,21 +91,16 @@ ax2 = axs[2]
 ax3 = axs[4]
 ax4 = axs[6]
 
-#print(np.max(df['CNV_Endpoint']/1000))
-
-
 color_array = ['darkgreen','springgreen','springgreen','springgreen','springgreen','springgreen','springgreen','greenyellow','greenyellow']
 pattern = ['xxx','///','///','///','///','///','///','','']
 for i in range(len(df['Strain'])):
     ax1.fill_between([df['CNV_Startpoint'][i]/1000,df['CNV_Endpoint'][i]/1000],[-i-0.3,-i-0.3],[-i+0.3,-i+0.3],  color=color_array[i], hatch=pattern[i], edgecolor="k", linewidth=1.0)
-    #ax.plot([df['CNV_Startpoint'][i]/1000,df['CNV_Endpoint'][i]/1000],[i,i], ms=10, color=color_array[i])
-#plt.yscale('log')
+    
 ax1.set_xticks(ticks=[400,500,600,666],labels=['0','500','600','666'], color='green');
 ax1.set_yticks(ticks=-1. * np.arange(0,9,1),labels=df['Names']);
 ax1.set_xlabel('Chromosome XI coordinate (kb)',fontsize=12, color='green')
 #ax1.set_ylabel('Chr 11',fontsize=14)
 ax1.set_ylim(-len(df['Strain'])-0.3,1.3)
-#ax1.set_xlim(400, np.max(df['CNV_Endpoint']/1000))
 ax1.set_xlim(400, 666)
 
 ax1.plot([516,516],[-100,100],':k',lw=2)
@@ -139,8 +131,7 @@ color_array = ['orangered']
 pattern = ['///']
 for i in range(len(df['Strain'])):
     ax2.fill_between([df['CNV_Startpoint'][i]/1000,df['CNV_Endpoint'][i]/1000],[-i-0.25,-i-0.25],[-i+0.25,-i+0.25],  color=color_array[i], hatch=pattern[i], edgecolor="k", linewidth=1.0)
-    #ax.plot([df['CNV_Startpoint'][i]/1000,df['CNV_Endpoint'][i]/1000],[i,i], ms=10, color=color_array[i])
-#plt.yscale('log')
+    
 ax2.set_xticks(ticks=[230, 300, 400, 496],labels=['0','300','400','784'], color='red');
 ax2.set_yticks(ticks=-1. * np.arange(0,len(df['Strain']),1),labels=df['Names']);
 ax2.set_xlabel('Chromosome XIV coordinate (kb)',fontsize=12, color='red')
@@ -159,7 +150,6 @@ label_name = ['3-copy MEP2','2-copy MEP2']
 
 for i in range(2):
     ax2.fill_between([415,425],[-i/1.2-0.2 + 0.5/1.2, -i/1.2-0.2 + 0.5/1.2],[-i/1.2+0.2 + 0.5/1.2, -i/1.2+0.2 + 0.5/1.2],  color=color_array[i], hatch=pattern[i], edgecolor="k", linewidth=1.0)
-    #ax.plot([df['CNV_Startpoint'][i]/1000,df['CNV_Endpoint'][i]/1000],[i,i], ms=10, color=color_array[i])
     ax2.text(430, -i/1.2-0.2 + 0.5/1.2, label_name[i],fontsize=14)
 
 ax2.plot([410,490],[1,1],'-k')
@@ -178,8 +168,7 @@ label_name = ['3-copy PUT4']
 
 for i in range(len(df['Strain'])):
     ax3.fill_between([df['CNV_Startpoint'][i]/1000,df['CNV_Endpoint'][i]/1000],[-i-0.25,-i-0.25],[-i+0.25,-i+0.25],  color=color_array[i], hatch=pattern[i], edgecolor="k", linewidth=1.0)
-    #ax.plot([df['CNV_Startpoint'][i]/1000,df['CNV_Endpoint'][i]/1000],[i,i], ms=10, color=color_array[i])
-#plt.yscale('log')
+    
 ax3.set_xticks(ticks=[850,925,1025,1116],labels=['0','925','1025','1091']);
 ax3.set_yticks(ticks=-1. * np.arange(0,len(df['Strain']),1),labels=df['Names']);
 ax3.set_xlabel('Chromosome XV coordinate (kb)',fontsize=12)
@@ -197,7 +186,6 @@ label_name = ['3-copy PUT4']
 
 for i in range(1):
     ax3.fill_between([1035,1045],[-i/1.2-0.2, -i/1.2-0.2],[-i/1.2+0.2, -i/1.2+0.2],  color=color_array[i], hatch=pattern[i], edgecolor="k", linewidth=1.0)
-    #ax.plot([df['CNV_Startpoint'][i]/1000,df['CNV_Endpoint'][i]/1000],[i,i], ms=10, color=color_array[i])
     ax3.text(1050, -i/1.2-0.2, label_name[i],fontsize=14)
 
 ax3.plot([1030,1110],[0.5,0.5],'-k')
@@ -225,8 +213,6 @@ ax4.plot([516/666,516/666],[-100,0],':k',lw=2)
 for ax in axs[:6]:
     ax.tick_params(axis='both', which='major', labelsize=14,
                     direction='in',length=8, width=1.3, bottom=True, left=True, top=False, right=False, zorder=15.0)
-    #ax.tick_params(axis='both', which='minor', labelsize=16,
-                    #direction='in',length=4, width=1.3, bottom=True, left=True, top=True, right=True, zorder=15.0)
     ax.spines['left'].set_linewidth(1.3)
     ax.spines['right'].set_linewidth(1.3)
     ax.spines['top'].set_linewidth(1.3)
