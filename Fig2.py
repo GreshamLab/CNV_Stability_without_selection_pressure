@@ -68,7 +68,6 @@ for k in range(len(Strain_names)):
         Ln_adj[i] = Ln_ratio[i]-Ln_ratio[0]
 
     val_combine_30 = np.concatenate((val_combine_30,Ln_adj))
-    #val_combine_30 = np.concatenate((val_combine_30,val))
 
     ax.plot(gen,Ln_adj,point_styles[k],c=color_array[k],alpha=1.0,ms=4)
 
@@ -95,7 +94,6 @@ ax.set_ylim(0.92, 1.11)
 ax.set_xlim(10, 700)
 ax.set_xscale('log')
 ax.set_xticks([10,20,50,100,200,500],[10,20,50,100,200,500])
-#ax.set_xlim(10, 700)
 
 # Monte Carlo simulation to account for error bars
 n_simulations = 10000
