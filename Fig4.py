@@ -76,8 +76,8 @@ def find_x_at_y(target_y, cs, x_range):
 x_50 = find_x_at_y(50, cs, x_smooth)
 
 if x_50 is not None:
-    ax.plot([x_smooth[0], x_50], [50, 50], '--',color='k', linewidth=1)  # Horizontal line
-    ax.plot([x_50, x_50], [0, 50], '--',color='k', linewidth=1)  # Vertical line
+    ax.plot([x_smooth[0], x_50], [50, 50], '--',color='k', linewidth=1)  
+    ax.plot([x_50, x_50], [0, 50], '--',color='k', linewidth=1)  
 
 # Function to solve for x when cs(x) = 25
 def find_x_at_y(target_y, cs, x_range):
@@ -141,7 +141,7 @@ for (i, j) in combinations(range(len(groups)), 2):
 p_values = {}
 significant_pairs = []
 for (i, j) in combinations(range(len(groups_m)), 2):
-    stat, p = ttest_ind(groups_m[i], groups_m[j], equal_var=False)  # Welch’s t-test
+    stat, p = ttest_ind(groups_m[i], groups_m[j], equal_var=False)  
     p_values[(labels_m[i], labels_m[j])] = p
     if p < 0.05:
         significant_pairs.append((i, j))
@@ -150,7 +150,7 @@ for (i, j) in combinations(range(len(groups_m)), 2):
 p_values = {}
 significant_pairs = []
 for (i, j) in combinations(range(len(groups_l)), 2):
-    stat, p = ttest_ind(groups_l[i], groups_l[j], equal_var=False)  # Welch’s t-test
+    stat, p = ttest_ind(groups_l[i], groups_l[j], equal_var=False)  
     p_values[(labels_l[i], labels_l[j])] = p
     if p < 0.05:
         significant_pairs.append((i, j))
