@@ -42,7 +42,7 @@ for i in range(len(c)):
 # Add error bars 
 x_pos = np.arange(len(df1))  # Get the positions for the bars
 ax.errorbar(x=x_pos, y=df1['Slope_plus_one'], yerr=2*df1['Std_err'], fmt='none', ecolor='steelblue', capsize=3, lw=2)
-ax.legend('')
+ax.legend('CNV_strains')
 
 ax.set_xticks([0,11,18,23,32],['G_4','GM_12','GM_13','GM_14','GM_15'])
 
@@ -97,8 +97,22 @@ for strain, (ymax, ymin) in highlight_estimates.items():
         x = df1[df1['Strain'] == strain].index[0]
         ax.fill_between([x - 0.3, x + 0.3], ymin, ymax, color='cyan', alpha=0.6)
 
+#Creating a legend
+import matplotlib.patches as mpatches
 
-#plt.savefig('Fig6.png',bbox_inches='tight',pad_inches = 0.05,dpi=300)
+# Create custom legend handles
+legend_handles = [
+    mpatches.Patch(facecolor='grey', edgecolor='k', label='CNV strains'),
+    mpatches.Patch(facecolor='gainsboro', edgecolor='k', hatch='////', label='Partial revertants'),
+    mpatches.Patch(facecolor='gainsboro', edgecolor='k', label='Complete revertants'),
+    mpatches.Patch(facecolor='cyan', edgecolor='k', label='Simulation estimates')
+]
+
+# Add legend to plot
+ax.legend(handles=legend_handles, loc='upper right', frameon=True,  edgecolor='black')
+
+
+#plt.savefig('Fig6.png',bbox_inches='tight',pad_inches = 0.05,dpi=500)
 #plt.savefig('Fig6.pdf',bbox_inches='tight',pad_inches = 0.05,dpi=300)
 
 plt.show()
