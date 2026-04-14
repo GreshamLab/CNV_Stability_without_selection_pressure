@@ -80,7 +80,7 @@ plt.show()
 
 df = pd.read_csv('All_strain_schematic_GAP1_20250122.CSV')
 
-gridspec = dict(hspace=0.3, height_ratios=[12,0.3,3,0.3,3,1,4])
+gridspec = dict(hspace=0.3, height_ratios=[12,0.3,2,0.3,2,2,5])
 fig, axs = plt.subplots(nrows=7, ncols=1, figsize=(8,10), gridspec_kw=gridspec)
 axs[1].set_visible(False)
 axs[3].set_visible(False)
@@ -91,6 +91,7 @@ ax2 = axs[2]
 ax3 = axs[4]
 ax4 = axs[6]
 
+
 color_array = ['darkgreen','springgreen','springgreen','springgreen','springgreen','springgreen','springgreen','greenyellow','greenyellow']
 pattern = ['xxx','///','///','///','///','///','///','','']
 for i in range(len(df['Strain'])):
@@ -99,7 +100,6 @@ for i in range(len(df['Strain'])):
 ax1.set_xticks(ticks=[400,500,600,666],labels=['0','500','600','666'], color='green');
 ax1.set_yticks(ticks=-1. * np.arange(0,9,1),labels=df['Names']);
 ax1.set_xlabel('Chromosome XI coordinate (kb)',fontsize=12, color='green')
-#ax1.set_ylabel('Chr 11',fontsize=14)
 ax1.set_ylim(-len(df['Strain'])-0.3,1.3)
 ax1.set_xlim(400, 666)
 
@@ -115,7 +115,6 @@ label_name = ['4-copy GAP1','3-copy GAP1','2-copy GAP1']
 
 for i in range(3):
     ax1.fill_between([585,595],[-i/1.2-6-0.2,-i/1.2-6-0.2],[-i/1.2+0.2-6,-i/1.2+0.2-6],  color=color_array[i], hatch=pattern[i], edgecolor="k", linewidth=1.0)
-    #ax.plot([df['CNV_Startpoint'][i]/1000,df['CNV_Endpoint'][i]/1000],[i,i], ms=10, color=color_array[i])
     ax1.text(600, -i/1.2-0.2 -6, label_name[i],fontsize=14)
 
 ax1.plot([580,660],[-5.25,-5.25],'-k')
@@ -136,8 +135,8 @@ ax2.set_xticks(ticks=[230, 300, 400, 496],labels=['0','300','400','784'], color=
 ax2.set_yticks(ticks=-1. * np.arange(0,len(df['Strain']),1),labels=df['Names']);
 ax2.set_xlabel('Chromosome XIV coordinate (kb)',fontsize=12, color='red')
 ax2.set_ylabel('      Strain name',fontsize=17)
-ax2.set_ylim(-len(df['Strain'])-0.3,1.3)
-ax2.set_xlim(230, 496) #np.max(df['CNV_Endpoint']/1000))
+ax2.set_ylim(-len(df['Strain']),1.)
+ax2.set_xlim(230, 496) 
 
 ax2.plot([359,359],[-100,100],':k',lw=2)
 ax2.tick_params(axis='x', which='major', labelsize=14, color='red')
@@ -146,16 +145,16 @@ ax2.tick_params(axis='x', which='major', labelsize=14, color='red')
 color_array = ['orangered','orange']
 pattern = ['///','']
 
-label_name = ['3-copy MEP2','2-copy MEP2']
+label_name = ['3-copy MEP2'] 
 
-for i in range(2):
-    ax2.fill_between([415,425],[-i/1.2-0.2 + 0.5/1.2, -i/1.2-0.2 + 0.5/1.2],[-i/1.2+0.2 + 0.5/1.2, -i/1.2+0.2 + 0.5/1.2],  color=color_array[i], hatch=pattern[i], edgecolor="k", linewidth=1.0)
-    ax2.text(430, -i/1.2-0.2 + 0.5/1.2, label_name[i],fontsize=14)
+for i in range(1):
+    ax2.fill_between([415,425],[-i/1.2-0.2, -i/1.2-0.2],[-i/1.2+0.2, -i/1.2+0.2],  color=color_array[i], hatch=pattern[i], edgecolor="k", linewidth=1.0)
+    ax2.text(430, -i/1.2-0.2, label_name[i],fontsize=14)
 
-ax2.plot([410,490],[1,1],'-k')
-ax2.plot([410,490],[-1,-1],'-k')
-ax2.plot([410,410],[1,-1],'-k')
-ax2.plot([490,490],[1,-1],'-k')
+ax2.plot([410,490],[0.5,0.5],'-k')
+ax2.plot([410,490],[-0.5,-0.5],'-k')
+ax2.plot([410,410],[0.5,-0.5],'-k')
+ax2.plot([490,490],[0.5,-0.5],'-k')
 #--------------------------------------
 
 
@@ -172,11 +171,11 @@ for i in range(len(df['Strain'])):
 ax3.set_xticks(ticks=[850,925,1025,1116],labels=['0','925','1025','1091']);
 ax3.set_yticks(ticks=-1. * np.arange(0,len(df['Strain']),1),labels=df['Names']);
 ax3.set_xlabel('Chromosome XV coordinate (kb)',fontsize=12)
-#ax3.set_ylabel('Chr 15',fontsize=14)
-ax3.set_ylim(-len(df['Strain'])-0.3,1.3)
-ax3.set_xlim(850, 1116) #np.max(df['CNV_Endpoint']/1000))
+ax3.set_ylim(-len(df['Strain']),1.)
+ax3.set_xlim(850, 1116) 
 
 ax3.plot([987,987],[-100,100],':k',lw=2)
+
 
 #----- legend box, and text
 color_array = ['violet']
@@ -202,10 +201,33 @@ for i in range(1):
 
 ax4.set_xticks(ticks=[0,0.3333,0.6666,1],labels=['0','222','444','666'], color='green');
 ax4.set_yticks(ticks=-1. * np.arange(0,1,1),labels=['GM_{12 to 15}'],rotation=90,verticalalignment='center');
-ax4.set_xlabel('Chromosome      or        coordinate (kb)',fontsize=12)
-#ax4.set_ylabel('Chr 11, 14\n',fontsize=14)
-ax4.set_ylim(-1,1)
-ax4.set_xlim(0, 1) #np.max(df['CNV_Endpoint']/1000))
+ax4.set_xlabel('Chromosome XI coordinate (kb)',fontsize=12, color='green')
+ax4.set_title('Chromosome XIV coordinate (kb)',fontsize=12, color='red')
+ax4.set_ylim(-1.3,1.3)
+ax4.set_xlim(0, 1) 
+
+
+#----- legend box, and text
+color_array = ['orange']
+pattern = ['']
+
+label_name = ['2-copy MEP2']
+
+for i in range(1):
+    ax4.fill_between([0.7,0.74],[-i/1.2-0.2 + 0.85, -i/1.2-0.2 + 0.85],[-i/1.2+0.05 + 0.85, -i/1.2+0.05 + 0.85],  color=color_array[i], hatch=pattern[i], edgecolor="k", linewidth=1.0)
+    ax4.text(0.75, -i/1.2-0.2 + 0.85, label_name[i],fontsize=14)
+
+L_end = 0.68
+R_end = 0.975
+T_end = 1.05
+B_end = 0.45
+
+ax4.plot([L_end,R_end],[T_end,T_end],'-k')
+ax4.plot([L_end,R_end],[B_end,B_end],'-k')
+ax4.plot([L_end,L_end],[T_end,B_end],'-k')
+ax4.plot([R_end,R_end],[T_end,B_end],'-k')
+#--------------------------------------
+
 
 ax4.plot([359/784,359/784],[0,100],':k',lw=2)
 ax4.plot([516/666,516/666],[-100,0],':k',lw=2)
@@ -222,13 +244,9 @@ ax4.tick_params(axis='x', which='major', labelsize=14, color='green',
                 direction='in',length=8, width=1.3, bottom=True, left=True, top=False, right=False, zorder=15.0)
 ax4.tick_params(axis='y', which='major', labelsize=14,
                 direction='in',length=0, width=0, bottom=True, left=True, top=False, right=False, zorder=15.0)
-#ax.tick_params(axis='both', which='minor', labelsize=16,
-                #direction='in',length=4, width=1.3, bottom=True, left=True, top=True, right=True, zorder=15.0)
 
 ax4.spines['left'].set_linewidth(1.3)
 ax4.spines['right'].set_linewidth(1.3)
-#ax4.spines['top'].set_linewidth(1.3)
-#ax4.spines['bottom'].set_linewidth(1.3)
 
 
 ax4_twin = ax4.twiny()
@@ -242,8 +260,10 @@ ax4_twin.spines['top'].set_color('red')
 ax4.spines['top'].set_lw(1.3)
 ax4.spines['bottom'].set_lw(1.3)
 
-ax4.text(0.43,-1.8,'XI',color='green',fontsize=12)
-ax4.text(0.5,-1.8,'XIV',color='red',fontsize=12)
+ax4.text(0.02,0.8,'Double aneuploids',fontsize=12)
+ax4.text(0.02,4.0,'Chr XV segmental CNV',fontsize=12)
+ax4.text(0.02,6.3,'Chr XIV segmental CNV',fontsize=12)
+ax4.text(0.02,13.7,'Chr XI segmental CNVs',fontsize=12)
 
 #plt.savefig('Fig_1B.png',bbox_inches='tight',pad_inches = 0.05,dpi=300)
 #plt.savefig('Fig_1B.pdf',bbox_inches='tight',pad_inches = 0.05,dpi=300)
