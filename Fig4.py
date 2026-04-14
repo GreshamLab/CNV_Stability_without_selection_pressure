@@ -76,8 +76,8 @@ def find_x_at_y(target_y, cs, x_range):
 x_50 = find_x_at_y(50, cs, x_smooth)
 
 if x_50 is not None:
-    ax.plot([x_smooth[0], x_50], [50, 50], '--',color='k', linewidth=1)  
-    ax.plot([x_50, x_50], [0, 50], '--',color='k', linewidth=1)  
+    ax.plot([x_smooth[0], x_50], [50, 50], '--',color='k', linewidth=1)  # Horizontal line
+    ax.plot([x_50, x_50], [0, 50], '--',color='k', linewidth=1)  # Vertical line
 
 # Function to solve for x when cs(x) = 25
 def find_x_at_y(target_y, cs, x_range):
@@ -141,7 +141,7 @@ for (i, j) in combinations(range(len(groups)), 2):
 p_values = {}
 significant_pairs = []
 for (i, j) in combinations(range(len(groups_m)), 2):
-    stat, p = ttest_ind(groups_m[i], groups_m[j], equal_var=False)  
+    stat, p = ttest_ind(groups_m[i], groups_m[j], equal_var=False)  # Welch’s t-test
     p_values[(labels_m[i], labels_m[j])] = p
     if p < 0.05:
         significant_pairs.append((i, j))
@@ -150,7 +150,7 @@ for (i, j) in combinations(range(len(groups_m)), 2):
 p_values = {}
 significant_pairs = []
 for (i, j) in combinations(range(len(groups_l)), 2):
-    stat, p = ttest_ind(groups_l[i], groups_l[j], equal_var=False)  
+    stat, p = ttest_ind(groups_l[i], groups_l[j], equal_var=False)  # Welch’s t-test
     p_values[(labels_l[i], labels_l[j])] = p
     if p < 0.05:
         significant_pairs.append((i, j))
@@ -167,6 +167,11 @@ i = 1
 for y_val in filtered_data:
     ax1.plot(np.array(y_val)*0.+i,y_val,'.',mfc='none',mec='k')
     i = i+1
+
+# Add total sample sizes for each group
+sample_sizes = [len(G_5), len(GM_Chr11), len(GM_Chr14)]
+for i, n in enumerate(sample_sizes, start=1):
+    ax1.text(i, max(filtered_data[i-1]) + 20, f"n={n}", ha='center', va='bottom', fontsize=10, color='k')
 
 for patch, color in zip(boxplots['boxes'], box_colors):
     patch.set_facecolor(color)
@@ -202,6 +207,11 @@ i = 1
 for y_val in filtered_data_m:
     ax2.plot(np.array(y_val)*0.+i,y_val,'.',mfc='none',mec='k')
     i = i+1
+
+# Add total sample sizes for each group
+sample_sizes = [len(G_5_m), len(GM_Chr11_m), len(GM_Chr14_m)]
+for i, n in enumerate(sample_sizes, start=1):
+    ax2.text(i, max(filtered_data_m[i-1]) + 20, f"n={n}", ha='center', va='bottom', fontsize=10, color='k')
     
 for patch, color in zip(boxplots['boxes'], box_colors):
     patch.set_facecolor(color)
@@ -234,6 +244,11 @@ i = 1
 for y_val in filtered_data_l:
     ax3.plot(np.array(y_val)*0.+i,y_val,'.',mfc='none',mec='k')
     i = i+1
+
+# Add total sample sizes for each group
+sample_sizes = [len(G_5_l), len(GM_Chr11_l), len(GM_Chr14_l)]
+for i, n in enumerate(sample_sizes, start=1):
+    ax3.text(i, max(filtered_data_l[i-1]) + 32, f"n={n}", ha='center', va='bottom', fontsize=10, color='k')
     
 for patch, color in zip(boxplots['boxes'], box_colors):
     patch.set_facecolor(color)
@@ -268,6 +283,12 @@ for ax in [ax1,ax2,ax3]:
     ax.set_yticks(ticks=[0,75,150,220],labels=['0','75','150','220'])
     ax.set_ylabel('Generations')
 
+    ##Not significant labels
+    x1, x2 = 1, 2 
+    y, h = -50, -10 
+    ax.plot([x1, x1, x2, x2], [y, y + h, y + h, y], color='grey', linewidth=1.2)
+    ax.text(0.5*(x1+x2), y-5, 'ns', ha='center', va='bottom')
+
     # Segmental and aneuploidy labels 
     x_start_seg = 0.8
     x_end_seg = 1.2
@@ -300,8 +321,8 @@ datasets = {
 medians = {name: statistics.median([val for val in data if val != 300]) for name, data in datasets.items()}
 print(medians)
 
-#plt.savefig('Fig4.png', pad_inches= 0.5, dpi=300)
-#plt.savefig('Fig4.pdf', pad_inches= 0.5, dpi=300)
+#plt.savefig('Fig4_revision2.png', pad_inches= 0.5, dpi=300)
+#plt.savefig('Fig4_revision2.pdf', pad_inches= 0.5, dpi=500)
 
 plt.show()
 
