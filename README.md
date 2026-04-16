@@ -46,7 +46,7 @@ Produces three panels:
 - **Fig 2A:** Raw CNV frequency (percentage of cells with CNV) across 15 generations of pairwise competition for three replicates of strain GM_13 (DGY2750).
 - **Fig 2B:** Log-ratio of strain to ancestor frequency over time, with a linear regression fit and 95% confidence interval. The slope estimates relative fitness.
 - **Fig 2C:** Scatter plot of CNV fitness cost (calculated from gene expression data) vs. measured relative fitness across all CNV strains, with a Monte Carlo regression and 95% CI band. Tests whether larger/costlier CNVs are less fit.
-- **Fig 2D:** Bar chart of relative fitness (slope + 1) for all CNV strains, with error bars (2× SE) and significance stars for strains with p ≤ 0.05.
+- **Fig 2D:** Bar chart of relative fitness (slope + 1) for all CNV strains, with error bars (2 × SE) and significance stars for strains with p ≤ 0.05.
 
 **Statistical methods:** Linear regression (`scipy.stats.linregress`), Monte Carlo simulation (10,000 iterations) for regression uncertainty, Pearson correlation.
 
@@ -119,8 +119,8 @@ All tabular data files are in `Data/Fig_Data/`:
 | `2024_11_Percentage_gating_LTEE3_YPD_20241205_edited.csv` | Flow cytometry gating data (% multicopy mCitrine/mCherry) for LTEE3 strains by generation | Fig 3 |
 | `2023_12_Percentage_gating_LTEE2_edit.csv` | Flow cytometry gating data for LTEE2 strains by generation | Figs 3, 4 |
 | `2018_Percentage_CNV_acquire_Lauer.csv` | Historical CNV acquisition data (Lauer et al. 2018) used for inset plots | Fig 3 |
-| `2018_Percentage_CNV_acquire_Rahman.csv` | Historical CNV acquisition data (Rahman et al. 2018) used for inset plots | Fig 3 |
-| `2018_Percentage_CNV_acquire_Avecilla.csv` | Historical CNV acquisition data (Avecilla et al. 2018) used for inset plots | Fig 3 |
+| `2018_Percentage_CNV_acquire_Rahman.csv` | Historical CNV acquisition data (Rahman et al. 2025) used for inset plots | Fig 3 |
+| `2018_Percentage_CNV_acquire_Avecilla.csv` | Historical CNV acquisition data (Avecilla et al. 2022) used for inset plots | Fig 3 |
 | `Bedgraph_files` | Text file containing a Google Drive link to PacBio bedgraph and split-read SAM files | Fig 7 |
 | `DGY*.fcs` | Flow cytometry FCS files for CNV parent and revertant strains | Fig 7 |
 
