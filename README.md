@@ -1,8 +1,10 @@
 # CNV Stability Without Selection Pressure
 
-Code and data associated with **De et al. 2025**. Each figure script contains all required data loading, statistical analysis, and visualization for the corresponding figure in the paper.
+Code and data associated with **De et al. 2025**. Each figure script contains all required data loading, analysis, and visualization for the corresponding figure in the paper.  
 
 **Preprint:** https://doi.org/10.1101/2025.07.21.665951
+
+Claude AI was used only to write the README below. All code development, data generation and analysis were done by Titir De. 
 
 ---
 
@@ -151,8 +153,3 @@ pip install numpy matplotlib pandas scipy FlowCal
 ## Usage
 
 Each script is self-contained. Run from the directory containing the data files, or update the file paths at the top of each script. Output is displayed interactively; commented-out `plt.savefig()` calls at the bottom of each script can be uncommented to save figures to disk.
-
-```bash
-cd Data/Fig_Data
-python ../../Fig1.py
-```
